@@ -1,4 +1,6 @@
 runtime: custom
+api_version: 1
+threadsafe: true
 env: flex
 runtime_config:
  python_version: 3
@@ -8,3 +10,11 @@ resources:
  cpu: 1
  memory_gb: 4
  disk_size_gb: 20
+handlers:
+- url: /
+  static_files: www/index.html
+  upload: www/index.html
+
+- url: /(.*)
+  static_files: www/\1
+  upload: www/(.*)
